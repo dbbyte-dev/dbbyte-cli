@@ -21,6 +21,10 @@ Commands:
   delete      Delete an object (or all its versions)
   sign        Create a signed, time-limited URL for an object
   versions    List the version history of an object
+  upload-url  Create a signed upload link for direct browser uploads
+  purge       Purge the CDN cache for a file or a whole bucket
+  buckets     List, get, create, update, or delete buckets
+  data        Read and write Serve data APIs
   health      Check API health
 
 Auth (required for every command except help):
@@ -53,6 +57,14 @@ func main() {
 		err = cmd.Sign(args)
 	case "versions":
 		err = cmd.Versions(args)
+	case "upload-url":
+		err = cmd.UploadURL(args)
+	case "purge":
+		err = cmd.Purge(args)
+	case "buckets":
+		err = cmd.Buckets(args)
+	case "data":
+		err = cmd.Data(args)
 	case "health":
 		err = cmd.Health(args)
 	case "-h", "--help", "help":
